@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div class="nav">
+        <div class="logoc"><img src="img/85776-league-ksv-legends-of-headgear-line-esports.png" id="imglg" alt=""></div>
+
+        <div class="menu" id="meu_menu">
+            <a href="index.html">Inicio</a>
+            <a href="sobre.html">Sobre</a>
+            <!-- <a href="">Time</a> -->
+            <a href="contato.html">Contato</a>
+
+
+
+            <div class="header">
+                <div class="container">
+                    <a href="cadastrar.html"><button class="efeito_bt" id="bt_login">Cadastrar</button></a>
+                    <a href="login.html"><button class="efeito_bt" id="bt_login">Login</button></a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="showcase_login">
+        <div class="container">
+            <div id="esquerdo_login">
+
+
+                <h3 style="color: #4697f0;">Casdastre-se</h3>
+
+                <form onsubmit="cadastrar_user()">
+                    <ul id="mensagemErro"></ul>
+
+                    <input id="inp_email" class="inp_loging" placeholder="E-mail" type="email">
+                    <input id="inp_nome_completo" class="inp_loging" placeholder="Nome Completo" type="text">
+                    <input id="inp_nascimento" class="inp_loging" placeholder="Data/Nascimento" type="date">
+                    <input class="inp_loging" placeholder="Senha" type="password">
+                    <input class="inp_loging" placeholder="Repita a senha" type="password"> <br>
+                    <input type="submit" class="efeito_btn_1">
+
+                    <!-- <button type="button" class="efeito_btn" id="btn_criar_login" >Cadastrar-se</button> -->
+
+                </form>
+            </div>
+
+
+            <div id="lado_direito_login">
+                <div id="tom_escuro">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function cadastrar_user() {
+        var erros = validaContato();
+
+        if (erros.length > 0) {
+            for (var i = 0; i < erros.length; i++) {
+                var erro = erros[i];
+                var lista = document.createElement("li");
+                lista.innerHTML = erro;
+                mensagemErro.appendChild(lista);
+
+            }
+        }
+    }
+    //     else {
+    //         //    Código que envia  os dados 
+    //         // para o BD
+    //     }
+    // }
+
+    function validaContato() {
+        var erros = [];
+        if ((!inp_email.value) || (inp_email.value.search('@')) == -1 || (inp_email.value.search('.')) == -1 || (inp_email.value.search(' ') >= '')) {
+            erros.push("O formato do email é: usuario@dominio.com");
+        }
+
+        if (!inp_nome_completo.value) {
+            erros.push("Preencher nome");
+        }
+
+        if (!inp_nascimento.value.value) {
+            erros.push("Preencha data nascimento");
+        }
+
+        return erros;
+    }
+</script>
